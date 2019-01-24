@@ -8,6 +8,10 @@ import java.net.Socket;
 import java.net.ServerSocket;
 
 /**
+ * Esta aplicación cliente-servidor está diseñada para enviar, recibir y leer un
+ * mensaje tres veces. Este es el codigo del servidor que se encarga de crear el
+ * socket servidor, realizar el bind en el puerto deseado y esperar la conexion
+ * del cliente. Recibe el primer mensaje y contesta con otro.
  *
  * @author Arturo
  */
@@ -24,7 +28,7 @@ public class Ejercicio1Servidor{
 
             System.out.println("Realizando el bind");
 
-            InetSocketAddress addr=new InetSocketAddress("localhost", 5555);
+            InetSocketAddress addr=new InetSocketAddress("localhost", 6666);
             serverSocket.bind(addr);
 
             System.out.println("Aceptando conexiones");
@@ -35,6 +39,8 @@ public class Ejercicio1Servidor{
 
             InputStream is=newSocket.getInputStream();
             OutputStream os=newSocket.getOutputStream();
+
+            //Inicio del bucle de recibir y enviar los mensajes
             for(int i=0; i<3; i++){
 
                 byte[] mensaje=new byte[25];
